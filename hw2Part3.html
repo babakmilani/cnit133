@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Part 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://kit.fontawesome.com/ee1296b4b3.js" crossorigin="anonymous"></script>
+  <style>
+    header {
+      text-align: center;
+      height: 150px;
+      background-color: brown;
+      padding-top: 18px;
+    }
+
+    body {
+
+      background-color: lightblue;
+
+    }
+
+    h1 {
+
+      margin-top: 18px;
+      font-size: 45px;
+      font-family: Copperplate;
+      color: lightblue;
+    }
+
+    h3 {
+      color: brown;
+
+    }
+
+    a:link {
+      color: lightbrown;
+      text-decoration: none;
+      background-color: transparent;
+
+    }
+
+    a:visited {
+      color: lightbrown;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: lightbrown;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    p {
+      text-align: center;
+      color: brown;
+    }
+
+    .centerNspace {
+      border-style: none;
+
+    }
+
+    .ab {
+      font-family: times;
+      color: red;
+    }
+
+    .twelve {
+      font-family: arial;
+      color: blue;
+    }
+
+    .thirtyFour {
+      font-family: impact;
+      color: green;
+      text-emphasis: 2;
+    }
+
+    .links {
+      text-decoration: none;
+      color: white;
+    }
+
+    .footer {
+      position: relative;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 75px;
+      background-color: brown;
+      color: white;
+      color: black;
+      text-align: center;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <header>
+    <h1><a href="index.html">CNIT 133 Homework- Basic Operations</a></h1>
+  </header>
+
+  <p>
+    <a href="HW2.html">Go Back</a>
+  </p>
+
+  <h2>Enter three integers</h2>
+
+  <div id="error"></div>
+
+  <form name="numbers" method="post">
+    <label for="intOne">#1:</label><br>
+    <input type="text" id="intOne" name="intOne" placeholder=""><br><br>
+    <label for="intTwo">#2:</label><br>
+    <input type="text" id="intTwo" name="intTwo" placeholder=""><br><br>
+    <label for="intThree">#3:</label><br>
+    <input type="text" id="intThree" name="intThree" placeholder=""><br><br>
+    <label for="intFour">#4:</label><br>
+    <input type="text" id="intFour" name="intFour" placeholder=""><br><br>
+    <label for="intFive">#5:</label><br>
+    <input type="text" id="intFive" name="intFive" placeholder=""><br><br>
+    <input type="button" name="button" value="Submit" onclick="calc()"><br><br><br>
+
+    <label for="negatives">Count of negative numbers:</label><br><br>
+    <input type="text" id="negatives" name="negatives" placeholder="" value="0"><br><br><br>
+    <label for="postives">Count of positive numbers:</label><br><br>
+    <input type="text" id="positives" name="positives" placeholder="" value="0"><br><br><br>
+    <label for="zeros">Count of zero's:</label><br><br>
+    <input type="text" id="zeros" name="zeros" placeholder="" value="0"><br><br><br>
+
+  </form>
+
+  <div>
+
+    <script>
+      function calc() {
+        var one = document.numbers.intOne.value;
+        var two = document.numbers.intTwo.value;
+        var three = document.numbers.intThree.value;
+        var four = document.numbers.intFour.value;
+        var five = document.numbers.intFive.value;
+        var negs = 0;
+        var pos = 0;
+        var negSum = 0;
+        var posSum = 0;
+        if(one < 0 && two < 0 && three < 0 && four < 0 && five < 0) {
+          negs = negs + 1;
+          negSum = negs + one + two + three + four + five;
+        }
+        else if(one > 0 && two > 0 && three > 0 && four > 0 && five > 0 ) {
+          pos = pos + 1;
+          posSum = pos + one + two + three + four + five;
+        }
+
+        if (isNaN(one) || isNaN(two) || isNaN(three) && !isNaN(one) && !isNaN(two) && !isNaN(three)) {
+          text = "Input not valid";
+        } else {
+          text = "";
+        }
+
+        document.getElementById("error").innerHTML = text;
+        
+        document.getElementById('positives').value = posSum;
+        document.getElementById('zeros').value = zero;
+
+
+      }
+    </script>
+  </div>
+
+  <div class="footer">
+    <div>All Rights reserved. Copyright Law 2021 CCSF. Developed by Kaizen Media Group</div>
+  </div>
+
+</body>
+
+</html>
