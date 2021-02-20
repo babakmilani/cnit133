@@ -124,13 +124,14 @@
     <label for="intFive">#5:</label><br>
     <input type="text" id="intFive" name="intFive" placeholder=""><br><br>
     <input type="button" name="button" value="Submit" onclick="calc()"><br><br><br>
-
-    <label for="negatives">Count of negative numbers:</label><br><br>
-    <input type="text" id="negatives" name="negatives" placeholder="" value="0"><br><br><br>
-    <label for="postives">Count of positive numbers:</label><br><br>
-    <input type="text" id="positives" name="positives" placeholder="" value="0"><br><br><br>
-    <label for="zeros">Count of zero's:</label><br><br>
-    <input type="text" id="zeros" name="zeros" placeholder="" value="0"><br><br><br>
+    <label for="arrayShow">You entered:</label><br><br>
+    <input type"text" id="arrayShow" name="display" placeholder=""><br><br>
+    <label for="showNegs">Negatives:</label><br><br>
+    <input type"text" id="showNegs" name="showNegs" placeholder=""><br><br>
+    <label for="showPos">Positives:</label><br><br>
+    <input type"text" id="showPos" name="showPos" placeholder=""><br><br>
+    <label for="showZeros">Zero's:</label><br><br>
+    <input type"text" id="showZeros" name="showZeros" placeholder=""><br><br>
 
   </form>
 
@@ -143,18 +144,35 @@
         var three = document.numbers.intThree.value;
         var four = document.numbers.intFour.value;
         var five = document.numbers.intFive.value;
-        var negs = 0;
-        var pos = 0;
-        var negSum = 0;
-        var posSum = 0;
-        if(one < 0 && two < 0 && three < 0 && four < 0 && five < 0) {
-          negs = negs + 1;
-          negSum = negs + one + two + three + four + five;
+        var arr = [];
+        var countNegs = 0;
+        var countPos = 0;
+        var countZero = 0;
+        var i = 0;
+        arr.push(one, two, three, four, five);
+
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i] < 0) {
+            countNegs += 1;
+          }
+
+          document.getElementById("showNegs").value = countNegs;
         }
-        else if(one > 0 && two > 0 && three > 0 && four > 0 && five > 0 ) {
-          pos = pos + 1;
-          posSum = pos + one + two + three + four + five;
+
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i] > 0) {
+            countPos+= 1;
+          }
+          document.getElementById("showPos").value = countPos;
         }
+
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i] == 0) {
+            countZero+= 1;
+          }
+          document.getElementById("showZeros").value = countZero;
+        }
+
 
         if (isNaN(one) || isNaN(two) || isNaN(three) && !isNaN(one) && !isNaN(two) && !isNaN(three)) {
           text = "Input not valid";
@@ -163,14 +181,13 @@
         }
 
         document.getElementById("error").innerHTML = text;
-        
-        document.getElementById('positives').value = posSum;
-        document.getElementById('zeros').value = zero;
-
+        document.getElementById("arrayShow").value = arr;
 
       }
     </script>
   </div>
+
+  <div id="error"></div>
 
   <div class="footer">
     <div>All Rights reserved. Copyright Law 2021 CCSF. Developed by Kaizen Media Group</div>
