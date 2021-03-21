@@ -5,90 +5,161 @@
   <title>Home Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="https://kit.fontawesome.com/ee1296b4b3.js" crossorigin="anonymous"></script>
-  <style>
-    header {
-      text-align: center;
-      height: 150px;
-      background-color: brown;
-      padding-top: 18px;
-    }
-
-    body {
-
-      background-color: lightblue;
-
-    }
-
-    h1 {
-
-      margin-top: 18px;
-      font-size: 45px;
-      font-family: Copperplate;
-      color: lightblue;
-    }
-
-    h3 {
-      color: brown;
-
-    }
-
-    a:link {
-      color: lightbrown;
-      text-decoration: none;
-      background-color: transparent;
-
-    }
-
-    a:visited {
-      color: lightbrown;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: lightbrown;
-      background-color: transparent;
-      text-decoration: none;
-    }
-
-    p {
-      text-align: center;
-      color: brown;
-    }
-
-    .centerNspace {
-      border-style: none;
-
-    }
-
-    .footer {
-      position: relative;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 75px;
-      background-color: brown;
-      color: white;
-      text-align: center;
-    }
-  </style>
-
-
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
   <header>
-    <h1><a href="index.html">CNIT 133 Homework</a></h1>
+    <h1><a href="index.html">Student Grades</a></h1>
   </header>
 
   <p>
     Hello and welcome to my first web aplication.
   </p>
+  <div>
+    If you are a student in sales, check out the Sales Calculator
+  </div><br>
+  <!-- Trigger/Open The Modal -->
+  <button id="myBtn">Sales Calculator</button>
 
-  <div class="footer">
-    <p>All Rights reserved. Copyright Law 2021 CCSF. Developed by Kaizen Media Group</p>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h4>Sales Calculator</h4>
+      <form id="form">
+        <label for="Salesmen">Salesperson</label>
+        <input type="text" id="Salesmen" name="salesmen"><br><br>
+        <h3>Input the number of items sold for each item number:</h3>
+        <label for="item1">Item 1:</label>
+        <input type="text" id="item1" name="item1"><br><br>
+        <label for="item2">Item 2:</label>
+        <input type="text" id="item2" name="item2"><br><br>
+        <label for="item3">Item 3:</label>
+        <input type="text" id="item3" name="item3"><br><br>
+        <label for="item4">Item 4:</label>
+        <input type="text" id="item4" name="item4"><br><br>
+        <input type="submit" value="Submit">
+        <input type="button" onclick="btnReset()" value="Reset"><br><br>
+        <h4>Item # &nbsp&nbsp Price &nbsp&nbsp&nbsp&nbsp Number Sold &nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          Total</h4>
+        <label for="itemOne">1 &nbsp&nbsp&nbsp $239.99 &nbsp&nbsp</label>
+        <input type="text" id="itemOne" name="itemOne">
+        <input type="text" id="item1Total" name="item1Total"><br>
+        <label for="itemTwo">2 &nbsp&nbsp&nbsp $129.75 &nbsp&nbsp</label>
+        <input type="text" id="itemTwo" name="itemTwo">
+        <input type="text" id="item2Total" name="item2Total"><br>
+        <label for="itemThree">3 &nbsp&nbsp&nbsp&nbsp&nbsp $99.95 &nbsp&nbsp</label>
+        <input type="text" id="itemThree" name="itemThree">
+        <input type="text" id="item3Total" name="item3Total"><br>
+        <label for="itemTwo">4 &nbsp&nbsp&nbsp $350.89 &nbsp&nbsp</label>
+        <input type="text" id="itemFour" name="itemFour">
+        <input type="text" id="item4Total" name="item4Total"><br><br>
+        <label for="totalSold">Total Amount Solds&nbsp&nbsp&nbsp
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <input type="text" id="totalSold" name="totalSold"><br><br>
+        <label for="earnings">Total Weekly Earnings:&nbsp&nbsp&nbsp&nbsp&nbsp
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <input type="text" id="earnings" name="earnings"><br><br>
+      </form>
+    </div>
+
   </div>
+
+  <script>
+    function btnReset() {
+      document.getElementById("form").reset();
+    }
+  </script>
+
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+  <script>
+    function grade() {
+      var hwAvg = document.getElementById('homework').value;
+      var midExam = document.getElementById('midterm').value;
+      var finalExam = document.getElementById('final').value;
+      var parts = document.getElementById('participation').value;
+      var total = (.5 * parseInt(hwAvg)) + (.2 * parseInt(midExam)) + (.2 * parseInt(finalExam)) + (.1 * parseInt(parts));
+
+
+      /*
+      var arr = [];
+      arr.push(hwAvg, midExam, finalExam, parts);
+      for (var i = 0; i < arr.length; i++) {
+        if(isNan(arr[i])) {
+
+          document.getElementById("note").innerHTML = "Invalid";
+        }
+
+      }
+      */
+
+      if (isNaN(hwAvg) || isNaN(midExam) || isNaN(finalExam) || isNaN(parts)) {
+        document.getElementById("note").innerHTML = "Invalid";
+      } else if (total >= 90 && total <= 100) {
+        document.getElementById("grade").value = "A";
+      } else if (total >= 80 && total <= 90) {
+        document.getElementById("grade").value = "B";
+      } else if (total >= 70 && grade <= 80) {
+        document.getElementById("grade").value = "C";
+      } else if (total >= 60 && total <= 70) {
+        document.getElementById("grade").value = "D";
+        document.getElementById("note").innerHTML = "You have to retake the course";
+      } else if (total >= 0 && total <= 50) {
+        document.getElementById("grade").value = "F";
+        document.getElementById("note").innerHTML = "You have to retake the course";
+      }
+
+    }
+  </script>
+  <h4>Enter your School Semester scores:</h4>
+  <label for="homework">Homework Average:</label><br>
+  <input type="text" id="homework" name="homework"><br><br>
+  <label for="midterm">Midterm:</label><br>
+  <input type="text" id="midterm" name="midterm"><br><br>
+  <label for="final">final:</label><br>
+  <input type="text" id="final" name="final"><br><br>
+  <label for="participation">participation</label><br>
+  <input type="text" id="participation" name="participation"><br><br>
+  <input type="button" onclick="grade()" value="Submit"><br><br>
+  <label for="grade">Your Grade</label><br><br>
+  <input type="text" id="grade" name="grade"><br><br>
+  <div id="note"></div>
+  <div class="footer">
+    <div>All Rights reserved. Copyright Law 2021 CCSF. Developed by Kaizen Media Group</div>
+  </div>
+
 </body>
 
 </html>
